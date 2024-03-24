@@ -1,7 +1,10 @@
+import { useState } from "react"
 import TaskCategoryCard from "./TaskCategoryCard"
 import TaskForm from "./TaskForm"
 
 function TaskContainer() {
+
+    const [tasks, setTasks] = useState([])
 
     const taskCategory = [
         { id: 1, type: "Pending", bg: "bg-gray-400" },
@@ -34,7 +37,7 @@ function TaskContainer() {
                                 <button className="btn btn-xs btn-circle border-gray-500">✕</button>
                             </form>
                         </div>
-                        <TaskForm />
+                        <TaskForm tasks={tasks} setTasks={setTasks}/>
                     </div>
                 </dialog>
             </div>
@@ -49,8 +52,8 @@ function TaskContainer() {
             </div>
             <div className="flex justify-between gap-3">
                 {
-                    taskCategory.map(task =>
-                        <TaskCategoryCard key={task.id} task={task}></TaskCategoryCard>
+                    taskCategory.map(taskCat =>
+                        <TaskCategoryCard key={taskCat.id} taskCat={taskCat} tasks={tasks}></TaskCategoryCard>
                     )
                 }
             </div>
