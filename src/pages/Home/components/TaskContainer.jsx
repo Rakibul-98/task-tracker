@@ -1,6 +1,6 @@
 import { useState } from "react"
-import TaskCategoryCard from "./TaskCategoryCard"
 import TaskForm from "./TaskForm"
+import TaskCategoryCard from "./TaskCategoryCard"
 
 function TaskContainer() {
 
@@ -15,7 +15,7 @@ function TaskContainer() {
     ]
 
     return (
-        <div className="border-2 border-white shadow-md shadow-slate-400 rounded-xl p-5 ">
+        <div className="border-2 border-white shadow-md shadow-slate-400 rounded-xl p-5 w-full min-h-[450px]">
             <div className="grid grid-cols-8">
                 <div className="col-span-6 flex gap-5">
                     <p>Filter By:</p>
@@ -37,7 +37,7 @@ function TaskContainer() {
                                 <button className="btn btn-xs btn-circle border-gray-500">✕</button>
                             </form>
                         </div>
-                        <TaskForm tasks={tasks} setTasks={setTasks}/>
+                        <TaskForm tasks={tasks} setTasks={setTasks} />
                     </div>
                 </dialog>
             </div>

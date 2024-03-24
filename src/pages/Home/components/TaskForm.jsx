@@ -13,7 +13,8 @@ function TaskForm({ tasks, setTasks }) {
             description: data.description,
             team: data.team,
             assignee: data.assignee,
-            priority: data.priority
+            priority: data.priority,
+            status: "Pending"
         }
         setTasks([...tasks, newTask])
         reset();

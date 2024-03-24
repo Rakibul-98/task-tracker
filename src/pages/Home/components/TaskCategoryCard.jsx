@@ -1,24 +1,16 @@
 /* eslint-disable react/prop-types */
 
-import TaskCard from "./TaskCard"
+import TaskCategory from "./TaskCategory";
 
-function TaskCategoryCard({taskCat,tasks}) {
-
+function TaskCategoryCard({taskCat, tasks}) {
+  
   const {type, bg} = taskCat;
+  const matchingTasks = tasks.filter(task => task.status === type);
 
   return (
     <div className="bg-white rounded-b-lg rounded-t-lg w-full">
       <p className={`category-title ${bg} text-white text-center font-bold p-3 rounded-t-lg`}>{type}</p>
-      {
-        tasks.length ? (
-          tasks.map(task => <TaskCard key={task.id} task={task} />)
-        ) : (
-          <div className="text-center my-10">
-            <h3 className="font-bold text-red-500">No task Found!!</h3>
-            <p className="text-sm">Create new task to show.</p>
-          </div>
-        )
-      }
+      <TaskCategory tasks={matchingTasks} type={type} />
     </div>
   )
 }
