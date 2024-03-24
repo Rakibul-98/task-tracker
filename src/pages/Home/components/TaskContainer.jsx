@@ -8,7 +8,7 @@ function TaskContainer() {
         { id: 2, type: "In Progress", bg: "bg-yellow-500" },
         { id: 3, type: "Completed", bg: "bg-green-500" },
         { id: 4, type: "Deployed", bg: "bg-violet-700" },
-        { id: 5, type: "Deffered", bg: "bg-rose-300" },
+        { id: 5, type: "Deffered", bg: "bg-rose-300" }
     ]
 
     return (
@@ -25,13 +25,16 @@ function TaskContainer() {
                     </select>
                     <input type="date" name="date" id="" />
                 </div>
-                <button onClick={()=>document.getElementById('my_modal_3').showModal()} className="bg-blue-500 text-white px-8 text-sm col-span-2">Add New Task</button>
+                <button onClick={() => document.getElementById('my_modal_3').showModal()} className="bg-blue-500 text-white px-8 text-sm col-span-2">Add New Task</button>
                 <dialog id="my_modal_3" className="modal">
-                    <div className="modal-box">
-                        <form method="dialog">
-                            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                        </form>
-                        <TaskForm/>
+                    <div className="modal-box rounded-none p-0 w-5/12">
+                        <div className="flex justify-between items-center py-2 px-4">
+                            <h3 className="uppercase font-bold">create task</h3>
+                            <form method="dialog">
+                                <button className="btn btn-xs btn-circle border-gray-500">✕</button>
+                            </form>
+                        </div>
+                        <TaskForm />
                     </div>
                 </dialog>
             </div>
