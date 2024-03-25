@@ -35,17 +35,17 @@ export default function EditTaskForm({ tasks, setTasks }) {
         <div className="">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className=" bg-fuchsia-200 p-5 form-control">
-                    <label htmlFor="title">Title:</label>
+                    <label>Title:</label>
                     <input className=" col-span-3 py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text" {...register("title")} required />
-                    <label htmlFor="description">Description:</label>
+                    <label>Description:</label>
                     <input className=" col-span-3 py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text" {...register("description")} required />
-                    <label htmlFor="team">Team:</label>
+                    <label >Team:</label>
                     <input className=" col-span-3 py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text" {...register("team")} required />
-                    <label htmlFor="assignee">Assignee:</label>
+                    <label>Assignee:</label>
                     <input className=" col-span-3 py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text" {...register("assignee")} required />
                     <div className="flex justify-between mt-5">
                         <div className="flex items-center">
-                            <label htmlFor="priority">Priority: </label>
+                            <label>Priority: </label>
                             <select {...register("priority")} required>
                                 <option value="0">0</option>
                                 <option value="1">1</option>
@@ -53,7 +53,7 @@ export default function EditTaskForm({ tasks, setTasks }) {
                             </select>
                         </div>
                         <div>
-                            <label htmlFor="priority">Status: </label>
+                            <label>Status: </label>
                             <input className="w-[100px] py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text"/>
                         </div>
                     </div>

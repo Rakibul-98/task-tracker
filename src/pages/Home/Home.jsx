@@ -1,4 +1,4 @@
-import TaskContainer from "./components/TaskContainer"
+import TaskContainer from "./components/TaskContainer/TaskContainer"
 import { FaUserAlt } from "react-icons/fa";
 
 function Home() {

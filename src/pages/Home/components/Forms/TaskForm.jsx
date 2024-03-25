@@ -37,23 +37,23 @@ function TaskForm() {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className=" bg-fuchsia-200 p-5">
                     <div className="grid grid-cols-4 mb-3">
-                        <label htmlFor="title">Title:</label>
+                        <label>Title:</label>
                         <input className=" col-span-3 py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text" {...register("title")} required />
                     </div>
                     <div className="grid grid-cols-4 mb-3">
-                        <label htmlFor="description">Description:</label>
+                        <label>Description:</label>
                         <input className=" col-span-3 py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text" {...register("description")} required />
                     </div>
                     <div className="grid grid-cols-4 mb-3">
-                        <label htmlFor="team">Team:</label>
+                        <label>Team:</label>
                         <input className=" col-span-3 py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text" {...register("team")} required />
                     </div>
                     <div className="grid grid-cols-4 mb-3">
-                        <label htmlFor="assignee">Assignee:</label>
+                        <label>Assignee:</label>
                         <input className=" col-span-3 py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text" {...register("assignee")} required />
                     </div>
                     <div className="grid grid-cols-4">
-                        <label htmlFor="priority">Priority:</label>
+                        <label>Priority:</label>
                         <select {...register("priority")} required>
                             <option value="0">0</option>
                             <option value="1">1</option>

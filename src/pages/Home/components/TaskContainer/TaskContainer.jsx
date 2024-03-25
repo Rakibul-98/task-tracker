@@ -1,4 +1,4 @@
-import TaskForm from "./TaskForm"
+import TaskForm from "../Forms/TaskForm"
 import TaskCategoryCard from "./TaskCategoryCard"
 
 function TaskContainer() {
@@ -40,7 +40,7 @@ function TaskContainer() {
             </div>
             <div className="flex gap-5 py-4">
                 <p>Sort By:</p>
-                <select className="rounded-sm px-3" id="cars">
+                <select className="rounded-sm px-3" id="c">
                     <option value="volvo">Volvo</option>
                     <option value="saab">Saab</option>
                     <option value="opel">Opel</option>
