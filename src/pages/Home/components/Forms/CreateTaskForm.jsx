@@ -14,7 +14,8 @@ function CreateTaskForm() {
             team: data.team,
             assignee: data.assignee,
             priority: data.priority,
-            status: "Pending"
+            status: "Pending",
+            createdDate: new Date().toLocaleString()
         }
         const existingTasks = JSON.parse(localStorage.getItem("taskList")) || [];
         existingTasks.push(newTask);

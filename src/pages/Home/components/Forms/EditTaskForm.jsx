@@ -7,11 +7,25 @@ export default function EditTaskForm({ task, onUpdate }) {
     const { register, handleSubmit, reset } = useForm({ defaultValues: task });
 
     const onSubmit = (data) => {
-        const updatedTask = {
+        let updatedTask = {
             ...task,
             priority: data.priority,
             status: data.status
+            
         };
+
+        if (data.status === "Completed") {
+            updatedTask = {
+                ...updatedTask,
+                completedDate: new Date().toLocaleString()
+            };
+        }
+        else{
+            updatedTask = {
+                ...updatedTask,
+                completedDate: null
+            };
+        }
 
         onUpdate(updatedTask);
         reset();
