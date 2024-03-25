@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 
 
-function TaskForm({ tasks, setTasks }) {
+function TaskForm() {
 
     const { register, handleSubmit, reset } = useForm()
     const onSubmit = (data) => {
@@ -16,9 +16,15 @@ function TaskForm({ tasks, setTasks }) {
             priority: data.priority,
             status: "Pending"
         }
-        setTasks([...tasks, newTask])
+        const existingTasks = JSON.parse(localStorage.getItem("taskList")) || [];
+        existingTasks.push(newTask);
+        localStorage.setItem("taskList", JSON.stringify(existingTasks));
         reset();
+        document.getElementById("my_modal_3").close();
         toast.success('New task created successfully!');
+        setTimeout(function(){
+            location.reload();
+        }, 500);
     }
 
     const handleReset = () => {
@@ -32,19 +38,19 @@ function TaskForm({ tasks, setTasks }) {
                 <div className=" bg-fuchsia-200 p-5">
                     <div className="grid grid-cols-4 mb-3">
                         <label htmlFor="title">Title:</label>
-                        <input className=" col-span-3 py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text" {...register("title")} required/>
+                        <input className=" col-span-3 py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text" {...register("title")} required />
                     </div>
                     <div className="grid grid-cols-4 mb-3">
                         <label htmlFor="description">Description:</label>
-                        <input className=" col-span-3 py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text" {...register("description")} required/>
+                        <input className=" col-span-3 py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text" {...register("description")} required />
                     </div>
                     <div className="grid grid-cols-4 mb-3">
                         <label htmlFor="team">Team:</label>
-                        <input className=" col-span-3 py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text" {...register("team")} required/>
+                        <input className=" col-span-3 py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text" {...register("team")} required />
                     </div>
                     <div className="grid grid-cols-4 mb-3">
                         <label htmlFor="assignee">Assignee:</label>
-                        <input className=" col-span-3 py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text" {...register("assignee")} required/>
+                        <input className=" col-span-3 py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text" {...register("assignee")} required />
                     </div>
                     <div className="grid grid-cols-4">
                         <label htmlFor="priority">Priority:</label>

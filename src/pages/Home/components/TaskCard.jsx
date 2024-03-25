@@ -4,7 +4,6 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import EditTaskForm from "./EditTaskForm";
 
 function TaskCard({ task }) {
-
   const { title, priority, description, assignee, status } = task;
 
   const handleEdit = () => {
@@ -18,16 +17,16 @@ function TaskCard({ task }) {
   }
 
   return (
-    <div className=" bg-red-50 p-4 mx-2 my-3 rounded-lg relative">
-      <div className="flex justify-between mb-3">
+    <div className=" bg-red-50 p-2 mx-2 my-3 rounded-lg">
+      <div className="flex justify-between mb-2">
         <h3 className="font-bold">{title}</h3>
         <p className="bg-blue-500 text-white w-fit px-1 text-sm">P{priority}</p>
       </div>
-      <hr className="h-[2px] bg-black" />
-      <p className="my-3">{description}</p>
+      <hr className="h-[2px] bg-gray-400" />
+      <p className="my-2 text-xs">{description}</p>
       <div className="flex justify-between mb-3">
         <p className="font-bold">@{assignee}</p>
-        <button className="bg-blue-500 text-white px-1" onClick={() => document.getElementById('my_modal_2').showModal()}><BsThreeDotsVertical /></button>
+        <button className="bg-blue-500 text-white px-1" onClick={()=>document.getElementById("my_modal_2").showModal()}><BsThreeDotsVertical /></button>
         <dialog id="my_modal_2" className="modal">
           <div className="modal-box w-32 p-2 rounded-md">
             <p className="hover:font-bold cursor-pointer" onClick={handleEdit}>Edit</p>
