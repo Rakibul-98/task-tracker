@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
 
-export default function DeleteModal({ deleteModalId, handleConfirmDelete, id, title }) {
+export default function DeleteModal({ deleteModalId, handleConfirmDelete, task }) {
+
+    const {id, title} = task;
+
     return (
         <dialog id={deleteModalId} className="modal">
             <div className="modal-box p-0 rounded-none w-4/12">

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { BsThreeDotsVertical } from "react-icons/bs";
-import OptionModal from "./modals/OptionModal";
+import OptionModal from "../modals/OptionModal";
 
 function TaskCard({ task, handleConfirmDelete}) {
   const { id, title, priority, description, assignee, status } = task;
@@ -17,7 +17,7 @@ function TaskCard({ task, handleConfirmDelete}) {
       <div className="flex justify-between mb-3">
         <p className="font-bold">@{assignee}</p>
         <button className="bg-blue-500 text-white px-1" onClick={()=>document.getElementById(optionModalId).showModal()}><BsThreeDotsVertical /></button>
-        <OptionModal id={id} handleConfirmDelete={handleConfirmDelete} title={title} optionModalId={optionModalId}/>
+        <OptionModal task={task} handleConfirmDelete={handleConfirmDelete} optionModalId={optionModalId}/>
       </div>
       <p className="bg-blue-500 text-white px-3 rounded-[4px] w-fit font-semibold">{status}</p>
     </div>

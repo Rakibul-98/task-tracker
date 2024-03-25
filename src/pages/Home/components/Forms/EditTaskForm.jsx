@@ -1,48 +1,43 @@
 /* eslint-disable react/prop-types */
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
-import { useForm } from "react-hook-form"
-import toast from "react-hot-toast"
+export default function EditTaskForm({ task, onUpdate }) {
 
-export default function EditTaskForm({ tasks, setTasks }) {
-    const { register, handleSubmit, reset } = useForm({
-        // defaultValues: {
-        //     title: tasks.title,
-        //     description: tasks.description,
-        //     team: tasks.team,
-        //     assignee: tasks.assignee,
-        //     priority: tasks.priority
-        // }
-    })
+    const { register, handleSubmit, reset } = useForm({ defaultValues: task });
+
     const onSubmit = (data) => {
-        const newTask = {
-            id: Math.floor(Math.random() * 1000000000),
-            title: data.title,
-            description: data.description,
-            team: data.team,
-            assignee: data.assignee,
+        const updatedTask = {
+            ...task,
             priority: data.priority,
-            status: "Pending"
-        }
-        setTasks([...tasks, newTask])
+            status: data.status
+        };
+
+        onUpdate(updatedTask);
         reset();
-        toast.success('New task created successfully!');
-    }
+        toast.success('Task updated successfully!');
+        setTimeout(function(){
+            location.reload();
+        }, 500);
+    };
+
     const handleReset = () => {
-        reset()
+        reset(task);
         toast.success('Form reset successful!');
     };
+
     return (
         <div className="">
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className=" bg-fuchsia-200 p-5 form-control">
+                <div className="bg-fuchsia-200 p-5 form-control">
                     <label>Title:</label>
-                    <input className=" col-span-3 py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text" {...register("title")} required />
+                    <input className="col-span-3 py-1 mt-1 mb-3 px-2 rounded-md bg-gray-200 border border-gray-400 outline-none text-gray-500" type="text" value={task.title} disabled />
                     <label>Description:</label>
-                    <input className=" col-span-3 py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text" {...register("description")} required />
-                    <label >Team:</label>
-                    <input className=" col-span-3 py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text" {...register("team")} required />
+                    <textarea className="col-span-3 py-1 mt-1 mb-3 px-2 rounded-md bg-gray-200 border border-gray-400 outline-none text-gray-500" type="text" value={task.description} disabled />
+                    <label>Team:</label>
+                    <input className="col-span-3 py-1 mt-1 mb-3 px-2 rounded-md bg-gray-200 border border-gray-400 outline-none text-gray-500" type="text" value={task.team} disabled />
                     <label>Assignee:</label>
-                    <input className=" col-span-3 py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text" {...register("assignee")} required />
+                    <input className="col-span-3 py-1 px-2 mt-1 rounded-md bg-gray-200 border border-gray-400 outline-none text-gray-500" type="text" value={task.assignee} disabled />
                     <div className="flex justify-between mt-5">
                         <div className="flex items-center">
                             <label>Priority: </label>
@@ -54,7 +49,7 @@ export default function EditTaskForm({ tasks, setTasks }) {
                         </div>
                         <div>
                             <label>Status: </label>
-                            <input className="w-[100px] py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text"/>
+                            <input className="w-[100px] py-1 px-2 rounded-md border border-gray-400 outline-none" type="text" {...register("status")} required />
                         </div>
                     </div>
                 </div>
@@ -64,5 +59,5 @@ export default function EditTaskForm({ tasks, setTasks }) {
                 </div>
             </form>
         </div>
-    )
+    );
 }

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 
 
-function TaskForm() {
+function CreateTaskForm() {
 
     const { register, handleSubmit, reset } = useForm()
     const onSubmit = (data) => {
@@ -20,7 +20,6 @@ function TaskForm() {
         existingTasks.push(newTask);
         localStorage.setItem("taskList", JSON.stringify(existingTasks));
         reset();
-        document.getElementById("my_modal_3").close();
         toast.success('New task created successfully!');
         setTimeout(function(){
             location.reload();
@@ -42,7 +41,7 @@ function TaskForm() {
                     </div>
                     <div className="grid grid-cols-4 mb-3">
                         <label>Description:</label>
-                        <input className=" col-span-3 py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text" {...register("description")} required />
+                        <textarea className=" col-span-3 py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text" {...register("description")} required />
                     </div>
                     <div className="grid grid-cols-4 mb-3">
                         <label>Team:</label>
@@ -70,4 +69,4 @@ function TaskForm() {
     )
 }
 
-export default TaskForm
+export default CreateTaskForm

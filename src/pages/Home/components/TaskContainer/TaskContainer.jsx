@@ -1,4 +1,4 @@
-import TaskForm from "../Forms/TaskForm"
+import CreateTaskForm from "../Forms/CreateTaskForm"
 import TaskCategoryCard from "./TaskCategoryCard"
 
 function TaskContainer() {
@@ -34,7 +34,7 @@ function TaskContainer() {
                                 <button className="btn btn-xs btn-circle border-gray-500">✕</button>
                             </form>
                         </div>
-                        <TaskForm />
+                        <CreateTaskForm />
                     </div>
                 </dialog>
             </div>

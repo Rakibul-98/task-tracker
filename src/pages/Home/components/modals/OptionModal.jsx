@@ -1,9 +1,12 @@
 /* eslint-disable react/prop-types */
 
+import toast from "react-hot-toast";
 import DeleteModal from "./DeleteModal";
 import EditModal from "./EditModal";
 
-export default function OptionModal({ id, title, optionModalId, handleConfirmDelete }) {
+export default function OptionModal({ task, optionModalId, handleConfirmDelete }) {
+
+    const {id, status} = task;
 
     const deleteModalId = `delete-modal-${id}`;
     const editModalId = `edit-modal-${id}`;
@@ -15,17 +18,22 @@ export default function OptionModal({ id, title, optionModalId, handleConfirmDel
 
     const handleDelete = () => {
         document.getElementById(optionModalId).close();
-        document.getElementById(deleteModalId).showModal();
+        if (status === "Completed") {
+            toast.error("Sorry!! Completed task can not be deleted.")
+        }
+        else {
+            document.getElementById(deleteModalId).showModal();
+        }
     }
 
     return (
         <dialog id={optionModalId} className="modal">
             <div className="modal-box w-32 p-2 rounded-md">
                 <p className="hover:font-bold cursor-pointer" onClick={handleEdit}>Edit</p>
-                <EditModal editModalId={editModalId} />
+                <EditModal editModalId={editModalId} task={task}/>
                 <hr />
                 <p className="hover:font-bold cursor-pointer" onClick={handleDelete}>Delete</p>
-                <DeleteModal deleteModalId={deleteModalId} handleConfirmDelete={handleConfirmDelete} id={id} title={title} />
+                <DeleteModal deleteModalId={deleteModalId} handleConfirmDelete={handleConfirmDelete} task={task} />
             </div>
             <form method="dialog" className="modal-backdrop">
                 <button>close</button>

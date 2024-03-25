@@ -4,20 +4,20 @@ import TaskCard from '../TaskCard/TaskCard';
 
 export default function TaskCategory({ tasks, type }) {
 
-  const handleConfirmDelete = (id) =>{
-    const tasks = JSON.parse(localStorage.getItem("taskList")) ||[];
-    const remainingTasks = tasks.filter(task => task.id!== id);
+  const handleConfirmDelete = (id) => {
+    const tasks = JSON.parse(localStorage.getItem("taskList")) || [];
+    const remainingTasks = tasks.filter(task => task.id !== id);
     localStorage.setItem("taskList", JSON.stringify(remainingTasks));
     toast.success("Task deleted successfully");
-    setTimeout(function(){
+    setTimeout(function () {
       location.reload();
-  }, 500);
+    }, 500);
   }
 
   return (
     <div>
       {tasks.length ? (
-        tasks.map(task => <TaskCard key={task.id} task={task} handleConfirmDelete={handleConfirmDelete}/>)
+        tasks.map(task => <TaskCard key={task.id} task={task} handleConfirmDelete={handleConfirmDelete} />)
       ) : (
         <div className="flex items-center min-h-[200px] m-2">
           <div className="text-center">
