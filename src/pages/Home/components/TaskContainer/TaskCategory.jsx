@@ -8,7 +8,7 @@ export default function TaskCategory({ tasks, type }) {
     const tasks = JSON.parse(localStorage.getItem("taskList")) || [];
     const remainingTasks = tasks.filter(task => task.id !== id);
     localStorage.setItem("taskList", JSON.stringify(remainingTasks));
-    toast.success("Task deleted successfully");
+    toast.error("Task deleted successfully");
     setTimeout(function () {
       location.reload();
     }, 500);

@@ -11,7 +11,6 @@ export default function EditTaskForm({ task, onUpdate }) {
             ...task,
             priority: data.priority,
             status: data.status
-            
         };
 
         if (data.status === "Completed") {
@@ -20,7 +19,7 @@ export default function EditTaskForm({ task, onUpdate }) {
                 completedDate: new Date().toLocaleString()
             };
         }
-        else{
+        else {
             updatedTask = {
                 ...updatedTask,
                 completedDate: null
@@ -30,13 +29,17 @@ export default function EditTaskForm({ task, onUpdate }) {
         onUpdate(updatedTask);
         reset();
         toast.success('Task updated successfully!');
-        setTimeout(function(){
+        setTimeout(function () {
             location.reload();
         }, 500);
     };
 
     const handleReset = () => {
-        reset(task);
+        reset({
+            ...task,
+            priority: 0,
+            status: ""
+        });
         toast.success('Form reset successful!');
     };
 
@@ -55,10 +58,10 @@ export default function EditTaskForm({ task, onUpdate }) {
                     <div className="flex justify-between mt-5">
                         <div className="flex items-center">
                             <label>Priority: </label>
-                            <select {...register("priority")} required>
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
+                            <select className="select select-sm focus:outline-none ms-2 rounded-md border border-gray-400" {...register("priority")} required>
+                                <option defaultValue="P0">P0</option>
+                                <option value="P1">P1</option>
+                                <option value="P2">P2</option>
                             </select>
                         </div>
                         <div>
@@ -68,7 +71,7 @@ export default function EditTaskForm({ task, onUpdate }) {
                     </div>
                 </div>
                 <div className="flex justify-end gap-5 p-5">
-                    <input className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded-md" type="submit" />
+                    <input className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded-md" type="submit" value="Update" />
                     <button type="button" onClick={handleReset} className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded-md">Reset</button>
                 </div>
             </form>

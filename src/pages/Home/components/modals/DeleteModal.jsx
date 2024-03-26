@@ -18,7 +18,7 @@ export default function DeleteModal({ deleteModalId, handleConfirmDelete, task }
                     <div className="flex justify-between">
                         <p className="font-semibold">{title}</p>
                         <div className="flex gap-4">
-                            <button onClick={() => handleConfirmDelete(id)} className="bg-blue-500  text-white px-5 rounded-sm">YES</button>
+                            <button onClick={() => handleConfirmDelete(id)} className="bg-blue-500 hover:bg-red-600  text-white px-5 rounded-sm">YES</button>
                             <button onClick={() => document.getElementById(deleteModalId).close()} className="bg-blue-500 hover:bg-blue-700 text-white px-5 rounded-sm">NO</button>
                         </div>
                     </div>

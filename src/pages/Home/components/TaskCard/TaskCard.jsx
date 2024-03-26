@@ -10,7 +10,7 @@ function TaskCard({ task, handleConfirmDelete}) {
     <div className=" bg-red-50 p-2 mx-2 my-3 rounded-lg">
       <div className="flex justify-between mb-2">
         <h3 className="font-bold">{title}</h3>
-        <p className="bg-blue-500 text-white w-fit px-1 text-sm">P{priority}</p>
+        <p className="bg-blue-500 text-white w-fit px-1 text-sm">{priority}</p>
       </div>
       <hr className="h-[2px] bg-gray-400" />
       <p className="my-2 text-xs">{description}</p>

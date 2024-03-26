@@ -2,10 +2,9 @@
 
 import TaskCategory from "./TaskCategory";
 
-function TaskCategoryCard({ taskCat }) {
+function TaskCategoryCard({ taskCat, tasks }) {
 
   const { type, bg } = taskCat;
-  const tasks = JSON.parse(localStorage.getItem("taskList")) || [];
   const matchingTasks = tasks.filter(task => task.status === type);
 
   return (

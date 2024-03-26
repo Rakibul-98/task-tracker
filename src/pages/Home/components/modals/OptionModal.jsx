@@ -28,11 +28,11 @@ export default function OptionModal({ task, optionModalId, handleConfirmDelete }
 
     return (
         <dialog id={optionModalId} className="modal">
-            <div className="modal-box w-32 p-2 rounded-md">
-                <p className="hover:font-bold cursor-pointer" onClick={handleEdit}>Edit</p>
+            <div className="modal-box w-32 p-2 rounded-md bg-stone-300">
+                <p className="hover:text-blue-500 cursor-pointer" onClick={handleEdit}>Edit</p>
                 <EditModal editModalId={editModalId} task={task}/>
-                <hr />
-                <p className="hover:font-bold cursor-pointer" onClick={handleDelete}>Delete</p>
+                <hr className="my-1" />
+                <p className="hover:text-red-500 cursor-pointer" onClick={handleDelete}>Delete</p>
                 <DeleteModal deleteModalId={deleteModalId} handleConfirmDelete={handleConfirmDelete} task={task} />
             </div>
             <form method="dialog" className="modal-backdrop">
