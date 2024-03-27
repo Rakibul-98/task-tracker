@@ -18,15 +18,25 @@ function TaskContainer() {
     const [sortedTasks, setSortedTasks] = useState(tasks);
 
     const handleFilterByName = (n) => {
-        const filteredTasks = tasks.filter(task => task.assignee.toLowerCase() === n.toLowerCase());
-        setSortedTasks(filteredTasks);
+        const filterByName = tasks.filter(task => task.assignee.toLowerCase() === n.toLowerCase());
+        setSortedTasks(filterByName);
+    }
+
+    const handleFilterByPriority = (p) => {
+        if (p != "Priority") {
+            const filterByPriority = tasks.filter(task => task.priority === p);
+            setSortedTasks(filterByPriority);
+        }
+        else{
+            setSortedTasks(tasks);
+        }
     }
 
     return (
         <div className="border-2 border-white shadow-md shadow-slate-400 rounded-xl p-5 w-full min-h-[450px]">
             <div className="grid grid-cols-4">
                 <div className="col-span-3">
-                    <FilterTask handleFilterByName={handleFilterByName}/>
+                    <FilterTask handleFilterByName={handleFilterByName} handleFilterByPriority={handleFilterByPriority} />
                 </div>
                 <button onClick={() => document.getElementById('add-task-modal').showModal()} className="bg-blue-500 text-white px-8 text-sm">Add New Task</button>
                 <CreateTaskModal />

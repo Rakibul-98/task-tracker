@@ -2,12 +2,7 @@
 
 import DatePicker from "./DatePicker";
 
-export default function FilterTask({ handleFilterByName }) {
-    
-
-    const handleFilterByPriority = (p) => {
-        alert(p);
-    }
+export default function FilterTask({ handleFilterByName, handleFilterByPriority }) {
 
     return (
         <div className=" flex items-center gap-5">
