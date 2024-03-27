@@ -17,11 +17,11 @@ export default function FilterTask({ setFilterValue}) {
             <p>Filter By:</p>
             <input
                 onBlur={(e) => setAssigneeName(e.target.value)}
-                className="p-1 rounded-md w-[125px] outline-none"
+                className="p-1 bg-gray-50 rounded-md w-[125px] outline-none placeholder:text-gray-500"
                 type="text"
                 placeholder="Assignee name"
             />
-            <select className="select select-sm focus:outline-none rounded-md text-gray-500" onChange={(e) => setPriority(e.target.value)}>
+            <select className="select select-sm bg-gray-50 focus:outline-none rounded-md text-gray-500" onChange={(e) => setPriority(e.target.value)}>
                 <option>Priority</option>
                 <option value="P0">P0</option>
                 <option value="P1">P1</option>
@@ -34,7 +34,7 @@ export default function FilterTask({ setFilterValue}) {
                     useRange={false} 
                     separator={"-"}
                     placeholder={"DD/MM/YY - DD/MM/YY"}
-                    inputClassName="w-full rounded-md focus:outline-none font-normal py-1 px-5 placeholder:text-gray-500"
+                    inputClassName="w-full rounded-md focus:outline-none font-normal py-1 px-5 bg-gray-50 placeholder:text-gray-500"
                 />
             </div>
 

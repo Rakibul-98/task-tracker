@@ -13,13 +13,13 @@ export default function DeleteModal({ deleteModalId, handleConfirmDelete, task }
                         <button className="btn btn-xs btn-circle border-gray-500">✕</button>
                     </form>
                 </div>
-                <div className="bg-fuchsia-200 px-5 pb-5">
+                <div className="bg-gradient-to-br from-fuchsia-200 to-violet-200 px-5 pb-5">
                     <p className="py-4">Do You Want to Delete Task?</p>
                     <div className="flex justify-between">
                         <p className="font-semibold">{title}</p>
                         <div className="flex gap-4">
-                            <button onClick={() => handleConfirmDelete(id)} className="bg-blue-500 hover:bg-red-600  text-white px-5 rounded-sm">YES</button>
-                            <button onClick={() => document.getElementById(deleteModalId).close()} className="bg-blue-500 hover:bg-blue-700 text-white px-5 rounded-sm">NO</button>
+                            <button onClick={() => handleConfirmDelete(id)} className="bg-sky-700 hover:bg-red-600  text-white px-5 rounded-sm">YES</button>
+                            <button onClick={() => document.getElementById(deleteModalId).close()} className="bg-sky-700 hover:bg-blue-700 text-white px-5 rounded-sm">NO</button>
                         </div>
                     </div>
                 </div>

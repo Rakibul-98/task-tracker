@@ -25,7 +25,7 @@ function CreateTaskForm() {
         toast.success('New task created successfully!');
         setTimeout(function(){
             location.reload();
-        }, 500);
+        }, 300);
     }
 
     const handleReset = () => {
@@ -36,7 +36,7 @@ function CreateTaskForm() {
     return (
         <div className="">
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className=" bg-fuchsia-200 p-5">
+                <div className=" bg-gradient-to-br from-fuchsia-200 to-violet-200 p-5">
                     <div className="grid grid-cols-4 mb-3">
                         <label>Title:</label>
                         <input className=" col-span-3 py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text" {...register("title")} required />
@@ -62,8 +62,8 @@ function CreateTaskForm() {
                             </select>
                     </div>
                 </div>
-                <div className="flex justify-end gap-5 p-5">
-                    <input className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded-md" type="submit" />
+                <div className="flex justify-end gap-5 py-3 px-5">
+                    <input className="bg-sky-700 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded-md" type="submit" />
                     <button type="button" onClick={handleReset} className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded-md">Reset</button>
                 </div>
             </form>

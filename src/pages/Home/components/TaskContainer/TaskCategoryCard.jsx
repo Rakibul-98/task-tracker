@@ -8,7 +8,7 @@ function TaskCategoryCard({ taskCat, tasks}) {
   const matchingTasks = tasks.filter(task => task.status === type);
 
   return (
-    <div className="bg-white rounded-b-lg rounded-t-lg w-full">
+    <div className="bg-white rounded-b-lg rounded-t-lg w-full h-fit">
       <p className={`category-title ${bg} text-white text-center font-bold p-1 rounded-t-lg`}>{type}</p>
       <TaskCategory tasks={matchingTasks} type={type} />
     </div>

@@ -5,12 +5,13 @@ import CreateTaskModal from "../modals/CreateTaskModal";
 import FilterTask from "./components/FilterTask";
 
 function TaskContainer() {
+    const calculatedHeight = `calc(100vh - 150px)`;
 
     const taskCategory = [
-        { id: 1, type: "Pending", bg: "bg-gray-400" },
-        { id: 2, type: "In Progress", bg: "bg-yellow-500" },
-        { id: 3, type: "Completed", bg: "bg-green-500" },
-        { id: 4, type: "Deployed", bg: "bg-violet-700" },
+        { id: 1, type: "Pending", bg: "bg-zinc-400" },
+        { id: 2, type: "In Progress", bg: "bg-amber-500" },
+        { id: 3, type: "Completed", bg: "bg-lime-600" },
+        { id: 4, type: "Deployed", bg: "bg-violet-800" },
         { id: 5, type: "Deferred", bg: "bg-rose-300" }
     ]
 
@@ -42,7 +43,7 @@ function TaskContainer() {
     };
 
     return (
-        <div className="border-2 border-white shadow-md shadow-slate-400 rounded-xl p-5 w-full min-h-[450px]">
+        <div className="border-2 border-white shadow-md shadow-slate-400 rounded-xl p-5 w-full" style={{ minHeight: calculatedHeight }}>
             <div className="flex justify-between">
                 <div className="col-span-3">
                     <FilterTask setFilterValue={setFilterValue} />
@@ -51,7 +52,7 @@ function TaskContainer() {
             </div>
             <div className="flex justify-between items-center">
                 <Sort tasks={tasks} setSortedTasks={setSortedTasks} />
-                <button onClick={() => document.getElementById('add-task-modal').showModal()} className="bg-blue-500 text-white py-[6px] w-72 text-sm">Add New Task</button>
+                <button onClick={() => document.getElementById('add-task-modal').showModal()} className="bg-sky-700 text-white py-[6px] w-72 text-sm">Add New Task</button>
                 <CreateTaskModal />
             </div>
             <div className="flex justify-between gap-3">

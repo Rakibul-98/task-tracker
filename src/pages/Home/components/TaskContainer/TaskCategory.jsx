@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import toast from 'react-hot-toast';
 import TaskCard from '../TaskCard/TaskCard';
+import { BiSad } from "react-icons/bi";
 
 export default function TaskCategory({ tasks, type }) {
 
@@ -11,7 +12,7 @@ export default function TaskCategory({ tasks, type }) {
     toast.error("Task deleted successfully");
     setTimeout(function () {
       location.reload();
-    }, 500);
+    }, 300);
   }
 
   return (
@@ -19,10 +20,10 @@ export default function TaskCategory({ tasks, type }) {
       {tasks.length ? (
         tasks.map(task => <TaskCard key={task.id} task={task} handleConfirmDelete={handleConfirmDelete} />)
       ) : (
-        <div className="flex items-center min-h-[200px] m-2">
-          <div className="text-center">
-            <h3 className="font-bold text-red-500">No {type} task found!!</h3>
-            <p className="text-sm">Create new tasks to show.</p>
+        <div className="flex items-center justify-center min-h-[170px]">
+          <div className='text-center text-red-500'>
+            <p className='flex justify-center text-5xl'><BiSad /></p>
+            <h3> <span className='font-bold text-lg'>{type}</span> <br /> task not found!!</h3>
           </div>
         </div>
       )}
