@@ -27,7 +27,26 @@ function TaskContainer() {
             const filterByPriority = tasks.filter(task => task.priority === p);
             setSortedTasks(filterByPriority);
         }
-        else{
+        else {
+            setSortedTasks(tasks);
+        }
+    }
+
+    const [value, setValue] = useState({
+        startDate: null,
+        endDate: null
+    });
+
+    const handleValueChange = (newValue) => {
+        setValue(newValue);
+        if (newValue.startDate && newValue.endDate) {
+            const filterByDateRange = tasks.filter(task => {
+                const taskDueDate = new Date(task.startDate);
+                return taskDueDate >= new Date(newValue.startDate) && taskDueDate <= new Date(newValue.endDate);
+            });
+            setSortedTasks(filterByDateRange);
+        }
+        else {
             setSortedTasks(tasks);
         }
     }
@@ -36,7 +55,7 @@ function TaskContainer() {
         <div className="border-2 border-white shadow-md shadow-slate-400 rounded-xl p-5 w-full min-h-[450px]">
             <div className="grid grid-cols-4">
                 <div className="col-span-3">
-                    <FilterTask handleFilterByName={handleFilterByName} handleFilterByPriority={handleFilterByPriority} />
+                    <FilterTask handleFilterByName={handleFilterByName} handleFilterByPriority={handleFilterByPriority} handleValueChange={handleValueChange} value={value} />
                 </div>
                 <button onClick={() => document.getElementById('add-task-modal').showModal()} className="bg-blue-500 text-white px-8 text-sm">Add New Task</button>
                 <CreateTaskModal />

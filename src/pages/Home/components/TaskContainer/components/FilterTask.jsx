@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 
-import DatePicker from "./DatePicker";
+import Datepicker from "react-tailwindcss-datepicker";
 
-export default function FilterTask({ handleFilterByName, handleFilterByPriority }) {
+export default function FilterTask({ handleFilterByName, handleFilterByPriority, handleValueChange, value }) {
 
     return (
         <div className=" flex items-center gap-5">
@@ -19,8 +19,13 @@ export default function FilterTask({ handleFilterByName, handleFilterByPriority 
                 <option value="P1">P1</option>
                 <option value="P2">P2</option>
             </select>
-            <div className="w-[28%]">
-                <DatePicker />
+            <div className="w-[250px]">
+                <Datepicker
+                    value={value}
+                    onChange={handleValueChange}
+                    placeholder={"DD/MM/YY - DD/MM/YY"}
+                    inputClassName="w-full rounded-md focus:outline-none font-normal py-1 px-5 placeholder:text-gray-500"
+                />
             </div>
         </div>
     )

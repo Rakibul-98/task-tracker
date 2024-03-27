@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 
 export default function Sort({ tasks, setSortedTasks }) {
-    console.log(tasks);
 
     const handleSort = (by) => {
         if (by === "priority") {
