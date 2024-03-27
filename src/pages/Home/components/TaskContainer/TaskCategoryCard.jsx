@@ -2,7 +2,7 @@
 
 import TaskCategory from "./TaskCategory";
 
-function TaskCategoryCard({ taskCat, tasks }) {
+function TaskCategoryCard({ taskCat, tasks}) {
 
   const { type, bg } = taskCat;
   const matchingTasks = tasks.filter(task => task.status === type);

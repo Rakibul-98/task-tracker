@@ -2,11 +2,9 @@
 
 import DatePicker from "./DatePicker";
 
-export default function FilterTask({ tasks }) {
+export default function FilterTask({ handleFilterByName }) {
+    
 
-    const handleFilterByName = (name) => {
-        alert(name);
-    }
     const handleFilterByPriority = (p) => {
         alert(p);
     }
@@ -14,14 +12,12 @@ export default function FilterTask({ tasks }) {
     return (
         <div className=" flex items-center gap-5">
             <p>Filter By:</p>
-            <select className="select select-sm focus:outline-none rounded-md text-gray-500" onChange={(e) => handleFilterByName(e.target.value)}>
-                <option>Assignee Name</option>
-                {
-                    tasks.map((task) => (
-                        <option key={task.id} value={task.assignee}>{task.assignee}</option>
-                    ))
-                }
-            </select>
+            <input
+                onBlur={(e) => handleFilterByName(e.target.value)}
+                className="p-1 rounded-md w-[125px] outline-none"
+                type="text"
+                placeholder="Assignee name"
+            />
             <select className="select select-sm focus:outline-none rounded-md text-gray-500" onChange={(e) => handleFilterByPriority(e.target.value)}>
                 <option>Priority</option>
                 <option value="P0">P0</option>

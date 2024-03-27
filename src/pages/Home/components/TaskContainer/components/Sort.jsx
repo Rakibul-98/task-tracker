@@ -23,7 +23,7 @@ export default function Sort({ tasks, setSortedTasks }) {
     return (
         <div className="flex gap-5 py-4">
             <p>Sort By:</p>
-            <select className="select select-sm focus:outline-none ms-2 rounded-md text-gray-500" onChange={(e) => handleSort(e.target.value)}>
+            <select className="select select-sm focus:outline-none ms-[6px] rounded-md text-gray-500" onChange={(e) => handleSort(e.target.value)}>
                 <option>Select</option>
                 <option value="priority">Priority</option>
                 <optgroup label="Date">
