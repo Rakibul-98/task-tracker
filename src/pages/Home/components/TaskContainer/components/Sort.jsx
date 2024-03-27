@@ -13,7 +13,7 @@ export default function Sort({ tasks, setSortedTasks }) {
             setSortedTasks(sortedByStartDate);
         }
         else if (by === "end") {
-            const sortedByEndDate = tasks.slice().sort((a, b) => new Date(a?.endDate) - new Date(b?.endDate));
+            const sortedByEndDate = tasks.slice().sort((a, b) => new Date(a.endDate) - new Date(b.endDate));
             console.log(sortedByEndDate);
             setSortedTasks(sortedByEndDate);
         }

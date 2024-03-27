@@ -18,8 +18,13 @@ function TaskContainer() {
     const [sortedTasks, setSortedTasks] = useState(tasks);
 
     const handleFilterByName = (n) => {
-        const filterByName = tasks.filter(task => task.assignee.toLowerCase() === n.toLowerCase());
-        setSortedTasks(filterByName);
+        if (n === "") {
+            setSortedTasks(tasks);
+        }
+        else {
+            const filterByName = tasks.filter(task => task.assignee.toLowerCase() === n.toLowerCase());
+            setSortedTasks(filterByName);
+        }
     }
 
     const handleFilterByPriority = (p) => {
