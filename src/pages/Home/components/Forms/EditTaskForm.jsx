@@ -66,7 +66,13 @@ export default function EditTaskForm({ task, onUpdate }) {
                         </div>
                         <div>
                             <label>Status: </label>
-                            <input className="w-[100px] py-1 px-2 rounded-md border border-gray-400 outline-none" type="text" {...register("status")} required />
+                            <select className="select select-sm focus:outline-none ms-2 rounded-md border border-gray-400" {...register("status")} required>
+                                <option value="Completed">Completed</option>
+                                <option value="In Progress">Pending</option>
+                                <option value="Pending">In Progress</option>
+                                <option value="Deployed" >Deployed</option>
+                                <option value="Deferred" >Deferred</option>
+                            </select>
                         </div>
                     </div>
                 </div>

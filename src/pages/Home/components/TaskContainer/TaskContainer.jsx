@@ -16,56 +16,44 @@ function TaskContainer() {
 
     const tasks = JSON.parse(localStorage.getItem("taskList")) || [];
     const [sortedTasks, setSortedTasks] = useState(tasks);
+    const [filterValue, setFilterValue] = useState({});
 
-    const handleFilterByName = (n) => {
-        if (n === "") {
-            setSortedTasks(tasks);
+    const handleFilter = () =>{
+        let filteredTasks = tasks;
+  
+        if (filterValue.assigneeName) {
+            const filterByName = filteredTasks.filter(task => task.assignee.toLowerCase() === filterValue.assigneeName.toLowerCase());
+            filteredTasks = filterByName;
         }
-        else {
-            const filterByName = tasks.filter(task => task.assignee.toLowerCase() === n.toLowerCase());
-            setSortedTasks(filterByName);
-        }
-    }
 
-    const handleFilterByPriority = (p) => {
-        if (p != "Priority") {
-            const filterByPriority = tasks.filter(task => task.priority === p);
-            setSortedTasks(filterByPriority);
+        if (filterValue.priority !== "Priority") {
+            const filterByPriority = filteredTasks.filter(task => task.priority === filterValue.priority);
+            filteredTasks = filterByPriority;
         }
-        else {
-            setSortedTasks(tasks);
-        }
-    }
 
-    const [value, setValue] = useState({
-        startDate: null,
-        endDate: null
-    });
-
-    const handleValueChange = (newValue) => {
-        setValue(newValue);
-        if (newValue.startDate && newValue.endDate) {
-            const filterByDateRange = tasks.filter(task => {
+        if (filterValue.dateRange.startDate && filterValue.dateRange.endDate) {
+            const filterByDateRange = filteredTasks.filter(task => {
                 const taskDueDate = new Date(task.startDate);
-                return taskDueDate >= new Date(newValue.startDate) && taskDueDate <= new Date(newValue.endDate);
+                return taskDueDate >= new Date(filterValue.dateRange.startDate) && taskDueDate <= new Date(filterValue.dateRange.endDate);
             });
-            setSortedTasks(filterByDateRange);
+            filteredTasks = filterByDateRange;
         }
-        else {
-            setSortedTasks(tasks);
-        }
-    }
+        setSortedTasks(filteredTasks);
+    };
 
     return (
         <div className="border-2 border-white shadow-md shadow-slate-400 rounded-xl p-5 w-full min-h-[450px]">
-            <div className="grid grid-cols-4">
+            <div className="flex justify-between">
                 <div className="col-span-3">
-                    <FilterTask handleFilterByName={handleFilterByName} handleFilterByPriority={handleFilterByPriority} handleValueChange={handleValueChange} value={value} />
+                    <FilterTask setFilterValue={setFilterValue} />
                 </div>
-                <button onClick={() => document.getElementById('add-task-modal').showModal()} className="bg-blue-500 text-white px-8 text-sm">Add New Task</button>
+                <button onClick={handleFilter} className="bg-orange-500 text-white py-[6px] px-10 text-sm">Apply Filter</button>
+            </div>
+            <div className="flex justify-between items-center">
+                <Sort tasks={tasks} setSortedTasks={setSortedTasks} />
+                <button onClick={() => document.getElementById('add-task-modal').showModal()} className="bg-blue-500 text-white py-[6px] w-72 text-sm">Add New Task</button>
                 <CreateTaskModal />
             </div>
-            <Sort tasks={tasks} setSortedTasks={setSortedTasks} />
             <div className="flex justify-between gap-3">
                 {
                     taskCategory.map(taskCat =>
