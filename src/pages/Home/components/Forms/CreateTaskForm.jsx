@@ -15,7 +15,8 @@ function CreateTaskForm() {
             assignee: data.assignee,
             priority: data.priority,
             status: "Pending",
-            createdDate: new Date()
+            startDate: new Date(),
+            endDate:""
         }
         const existingTasks = JSON.parse(localStorage.getItem("taskList")) || [];
         existingTasks.push(newTask);
@@ -55,7 +56,7 @@ function CreateTaskForm() {
                     <div className="grid grid-cols-4">
                         <label>Priority:</label>
                         <select className="select select-sm focus:outline-none rounded-md border border-gray-400" {...register("priority")} required>
-                                <option selected value="P0">P0</option>
+                                <option defaultValue="P0">P0</option>
                                 <option value="P1">P1</option>
                                 <option value="P2">P2</option>
                             </select>

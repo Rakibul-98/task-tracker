@@ -10,7 +10,7 @@ function TaskContainer() {
         { id: 2, type: "In Progress", bg: "bg-yellow-500" },
         { id: 3, type: "Completed", bg: "bg-green-500" },
         { id: 4, type: "Deployed", bg: "bg-violet-700" },
-        { id: 5, type: "Deffered", bg: "bg-rose-300" }
+        { id: 5, type: "Deferred", bg: "bg-rose-300" }
     ]
 
     const tasks = JSON.parse(localStorage.getItem("taskList")) || [];

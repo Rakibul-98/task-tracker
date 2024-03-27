@@ -16,13 +16,13 @@ export default function EditTaskForm({ task, onUpdate }) {
         if (data.status === "Completed") {
             updatedTask = {
                 ...updatedTask,
-                completedDate: new Date().toLocaleString()
+                endDate: new Date()
             };
         }
         else {
             updatedTask = {
                 ...updatedTask,
-                completedDate: null
+                endDate: ""
             };
         }
 
