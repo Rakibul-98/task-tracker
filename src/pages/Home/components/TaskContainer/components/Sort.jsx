@@ -20,9 +20,9 @@ export default function Sort({ tasks, setSortedTasks }) {
     }
 
     return (
-        <div className="flex gap-5 py-4">
-            <p>Sort By:</p>
-            <select className="select select-sm focus:outline-none ms-[6px] bg-gray-50 rounded-md text-gray-500" onChange={(e) => handleSort(e.target.value)}>
+        <div className="md:flex items-center gap-3 py-4 md:py-0">
+            <p className="w-24">Sort By:</p>
+            <select className="select select-sm focus:outline-none w-full mt-3 md:mt-0 bg-gray-50 rounded-md text-gray-500" onChange={(e) => handleSort(e.target.value)}>
                 <option>Select</option>
                 <option value="priority">Priority</option>
                 <optgroup label="Date">

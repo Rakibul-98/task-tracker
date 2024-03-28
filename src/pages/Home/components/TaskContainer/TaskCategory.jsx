@@ -16,7 +16,7 @@ export default function TaskCategory({ tasks, type }) {
   }
 
   return (
-    <div>
+    <div className='mb-3 pb-2'>
       {tasks.length ? (
         tasks.map(task => <TaskCard key={task.id} task={task} handleConfirmDelete={handleConfirmDelete} />)
       ) : (

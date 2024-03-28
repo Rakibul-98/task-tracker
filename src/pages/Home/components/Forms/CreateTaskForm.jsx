@@ -33,29 +33,28 @@ function CreateTaskForm() {
         toast.success('Form reset successful!');
     };
 
+    const formField = [
+        {id:1, name:"title"},
+        {id:2, name:"description"},
+        {id:3, name:"team"},
+        {id:4, name:"assignee"}
+    ]
+
     return (
-        <div className="">
+        <div className="text-sm">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className=" bg-gradient-to-br from-fuchsia-200 to-violet-200 p-5">
-                    <div className="grid grid-cols-4 mb-3">
-                        <label>Title:</label>
-                        <input className=" col-span-3 py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text" {...register("title")} required />
-                    </div>
-                    <div className="grid grid-cols-4 mb-3">
-                        <label>Description:</label>
-                        <textarea className=" col-span-3 py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text" {...register("description")} required />
-                    </div>
-                    <div className="grid grid-cols-4 mb-3">
-                        <label>Team:</label>
-                        <input className=" col-span-3 py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text" {...register("team")} required />
-                    </div>
-                    <div className="grid grid-cols-4 mb-3">
-                        <label>Assignee:</label>
-                        <input className=" col-span-3 py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text" {...register("assignee")} required />
-                    </div>
-                    <div className="grid grid-cols-4">
-                        <label>Priority:</label>
-                        <select className="select select-sm focus:outline-none rounded-md border border-gray-400" {...register("priority")} required>
+                    {
+                        formField.map(field => (
+                            <div key={field.id} className="grid grid-cols-5 md:grid-cols-4 mb-3">
+                                <label className="capitalize col-span-2 md:col-span-1">{field.name}:</label>
+                                <input className=" col-span-3 py-1 px-2 rounded-md bg-gray-50 border border-gray-400 outline-none" type="text" {...register(field.name)} required />
+                            </div>
+                        ))
+                    }
+                    <div className="grid grid-cols-5 md:grid-cols-4">
+                        <label className="col-span-2 md:col-span-1">Priority:</label>
+                        <select className="select w-fit select-sm focus:outline-none rounded-md border border-gray-400" {...register("priority")} required>
                                 <option defaultValue="P0">P0</option>
                                 <option value="P1">P1</option>
                                 <option value="P2">P2</option>

@@ -13,28 +13,28 @@ export default function FilterTask({ setFilterValue}) {
     }, [setFilterValue, assigneeName, priority, dateRange]);
 
     return (
-        <div className=" flex items-center gap-5">
-            <p>Filter By:</p>
+        <div className="md:flex items-center md:gap-2">
+            <p className="w-16">Filter By:</p>
             <input
                 onBlur={(e) => setAssigneeName(e.target.value)}
-                className="p-1 bg-gray-50 rounded-md w-[125px] outline-none placeholder:text-gray-500"
+                className="p-1 bg-gray-50 rounded-md w-full md:w-[25%] my-3 md:my-0 outline-none placeholder:text-gray-500 ps-3"
                 type="text"
                 placeholder="Assignee name"
             />
-            <select className="select select-sm bg-gray-50 focus:outline-none rounded-md text-gray-500" onChange={(e) => setPriority(e.target.value)}>
+            <select className="select select-sm w-full md:w-[15%] bg-gray-50 focus:outline-none rounded-md text-gray-500" onChange={(e) => setPriority(e.target.value)}>
                 <option>Priority</option>
                 <option value="P0">P0</option>
                 <option value="P1">P1</option>
                 <option value="P2">P2</option>
             </select>
-            <div className="w-[250px]">
+            <div className="md:w-[200px] my-3 md:my-0">
                 <Datepicker
                     value={dateRange}
                     onChange={(value) => setDateRange(value)}
                     useRange={false} 
                     separator={"-"}
                     placeholder={"DD/MM/YY - DD/MM/YY"}
-                    inputClassName="w-full rounded-md focus:outline-none font-normal py-1 px-5 bg-gray-50 placeholder:text-gray-500"
+                    inputClassName="w-full rounded-md focus:outline-none font-normal py-1 px-5 bg-gray-50 placeholder:text-gray-500 placeholder:text-xs"
                 />
             </div>
 

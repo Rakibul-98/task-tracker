@@ -7,7 +7,7 @@ function TaskCard({ task, handleConfirmDelete}) {
   const optionModalId = `option-modal-${id}`;
 
   return (
-    <div className=" bg-stone-100 p-2 mx-2 my-3 rounded-lg">
+    <div className=" bg-stone-100 p-2 rounded-lg m-2 mb-0">
       <div className="flex justify-between mb-2">
         <h3 className="font-bold">{title}</h3>
         <p className="bg-sky-700 text-white w-fit px-1 text-sm">{priority}</p>

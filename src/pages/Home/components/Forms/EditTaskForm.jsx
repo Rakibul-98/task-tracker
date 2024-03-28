@@ -43,37 +43,59 @@ export default function EditTaskForm({ task, onUpdate }) {
         toast.success('Form reset successful!');
     };
 
+    const formInputs = [
+        { id: 1, name: "title", value: task.title },
+        { id: 2, name: "description", value: task.description },
+        { id: 3, name: "team", value: task.team },
+        { id: 4, name: "assignee", value: task.assignee },
+    ]
+
+    const formOptions = [
+        { id: 1, name: "priority", value: task.priority, options:[
+            { id: 1, name: "P0" },
+            { id: 2, name: "P1" },
+            { id: 3, name: "P2" }
+        ] },
+        { id: 2, name: "status", value: task.status, options:[
+            { id: 1, name: "In Progress" },
+            { id: 2, name: "Completed" },
+            { id: 3, name: "Deployed" },
+            { id: 4, name: "Deferred" },
+            { id: 5, name: "Pending" }
+        ] },
+    ]
+
     return (
         <div className="">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="bg-gradient-to-br from-fuchsia-200 to-violet-200 p-5 form-control">
-                    <label>Title:</label>
-                    <input className="col-span-3 py-1 mt-1 mb-3 px-2 rounded-md bg-stone-300 border border-gray-400 outline-none text-gray-500" type="text" value={task.title} disabled />
-                    <label>Description:</label>
-                    <textarea className="col-span-3 py-1 mt-1 mb-3 px-2 rounded-md bg-stone-300 border border-gray-400 outline-none text-gray-500" type="text" value={task.description} disabled />
-                    <label>Team:</label>
-                    <input className="col-span-3 py-1 mt-1 mb-3 px-2 rounded-md bg-stone-300 border border-gray-400 outline-none text-gray-500" type="text" value={task.team} disabled />
-                    <label>Assignee:</label>
-                    <input className="col-span-3 py-1 px-2 mt-1 rounded-md bg-stone-300 border border-gray-400 outline-none text-gray-500" type="text" value={task.assignee} disabled />
-                    <div className="flex justify-between mt-5">
-                        <div className="flex items-center">
-                            <label>Priority: </label>
-                            <select className="select select-sm focus:outline-none ms-2 rounded-md border border-gray-400" {...register("priority")} required>
-                                <option defaultValue="P0">P0</option>
-                                <option value="P1">P1</option>
-                                <option value="P2">P2</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label>Status: </label>
-                            <select className="select select-sm focus:outline-none ms-2 rounded-md border border-gray-400" {...register("status")} required>
-                                <option value="Completed">Completed</option>
-                                <option value="In Progress">In Progress</option>
-                                <option value="Pending">Pending</option>
-                                <option value="Deployed" >Deployed</option>
-                                <option value="Deferred" >Deferred</option>
-                            </select>
-                        </div>
+                    {
+                        formInputs.map((field) => {
+                            return (
+                                <div key={field.id}>
+                                    <label className="capitalize">{field.name}: </label>
+                                    <br />
+                                    <input className="py-1 mt-1 md:w-full mb-3 px-2 rounded-md bg-stone-300 border border-gray-400 outline-none text-gray-500" type="text" value={field.value} disabled />
+                                </div>
+                            )
+                        })
+                    }
+                    <div className="md:flex justify-between">
+                        {
+                            formOptions.map((field) => {
+                                return (
+                                    <div key={field.id}
+                                        className="grid grid-cols-4 mt-2 md:inline">
+                                        <label className="capitalize">{field.name}: </label>
+                                        <select className="w-fit select select-sm focus:outline-none rounded-md border border-gray-400" defaultValue={field.value} {...register(field.name)} required>
+                                            {
+                                                field.options.map(optn=><option key={optn.id} value={optn.name}>{optn.name}</option>)
+                                            }
+                                        </select>
+                                    </div>
+                                )
+                            })
+                        }
                     </div>
                 </div>
                 <div className="flex justify-end gap-5 p-5">
