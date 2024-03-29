@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 import TaskCard from '../TaskCard/TaskCard';
 import { BiSad } from "react-icons/bi";
 
-export default function TaskCategory({ tasks, type }) {
+export default function TaskCategoryBody({ tasks, type }) {
 
   const handleConfirmDelete = (id) => {
     const tasks = JSON.parse(localStorage.getItem("taskList")) || [];

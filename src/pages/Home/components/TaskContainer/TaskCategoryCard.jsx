@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-import TaskCategory from "./TaskCategory";
+import TaskCategoryBody from "./TaskCategoryBody";
 
 function TaskCategoryCard({ taskCat, tasks}) {
 
@@ -10,7 +10,7 @@ function TaskCategoryCard({ taskCat, tasks}) {
   return (
     <div className="bg-white rounded-b-lg rounded-t-lg w-full h-fit">
       <p className={`category-title ${bg} text-white text-center font-bold p-1 rounded-t-lg`}>{type}</p>
-      <TaskCategory tasks={matchingTasks} type={type} />
+      <TaskCategoryBody tasks={matchingTasks} type={type} />
     </div>
   )
 }
