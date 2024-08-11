@@ -1,5 +1,5 @@
 import { useState } from "react";
-import TaskCategoryCard from "./TaskCategoryCard"
+import TaskCategoryCard from "./TaskCategoryCard";
 import Sort from "./components/Sort";
 import CreateTaskModal from "../modals/CreateTaskModal";
 import FilterTask from "./components/FilterTask";
@@ -9,6 +9,7 @@ function TaskContainer() {
     const tasks = JSON.parse(localStorage.getItem("taskList")) || [];
     const [sortedTasks, setSortedTasks] = useState(tasks);
     const [filterValue, setFilterValue] = useState({});
+    const [activeModal, setActiveModal] = useState(null);
 
     const taskCategory = [
         { id: 1, type: "Pending", bg: "bg-zinc-400" },
@@ -16,27 +17,24 @@ function TaskContainer() {
         { id: 3, type: "Completed", bg: "bg-lime-600" },
         { id: 4, type: "Deployed", bg: "bg-violet-800" },
         { id: 5, type: "Deferred", bg: "bg-rose-300" }
-    ]
+    ];
 
     const handleFilter = () => {
         let filteredTasks = tasks;
 
         if (filterValue.assigneeName) {
-            const filterByName = filteredTasks.filter(task => task.assignee.toLowerCase() === filterValue.assigneeName.toLowerCase());
-            filteredTasks = filterByName;
+            filteredTasks = filteredTasks.filter(task => task.assignee.toLowerCase() === filterValue.assigneeName.toLowerCase());
         }
 
         if (filterValue.priority !== "Priority") {
-            const filterByPriority = filteredTasks.filter(task => task.priority === filterValue.priority);
-            filteredTasks = filterByPriority;
+            filteredTasks = filteredTasks.filter(task => task.priority === filterValue.priority);
         }
 
         if (filterValue.dateRange.startDate && filterValue.dateRange.endDate) {
-            const filterByDateRange = filteredTasks.filter(task => {
+            filteredTasks = filteredTasks.filter(task => {
                 const taskDueDate = new Date(task.startDate);
                 return taskDueDate >= new Date(filterValue.dateRange.startDate) && taskDueDate <= new Date(filterValue.dateRange.endDate);
             });
-            filteredTasks = filterByDateRange;
         }
         setSortedTasks(filteredTasks);
     };
@@ -61,12 +59,18 @@ function TaskContainer() {
             <div className="lg:flex md:grid grid-cols-2 justify-between gap-3">
                 {
                     taskCategory.map(taskCat =>
-                        <TaskCategoryCard key={taskCat.id} taskCat={taskCat} tasks={sortedTasks}></TaskCategoryCard>
+                        <TaskCategoryCard
+                            key={taskCat.id}
+                            taskCat={taskCat}
+                            tasks={sortedTasks}
+                            activeModal={activeModal}
+                            setActiveModal={setActiveModal}
+                        />
                     )
                 }
             </div>
         </div>
-    )
+    );
 }
 
-export default TaskContainer
+export default TaskContainer;
